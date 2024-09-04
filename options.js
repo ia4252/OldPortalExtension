@@ -1,32 +1,27 @@
-// Saves options to chrome.storage
-const saveOptions = () => {
-    const color = document.getElementById('color').value;
-    const likesColor = document.getElementById('like').checked;
-  
-    chrome.storage.sync.set(
-      { favoriteColor: color, likesColor: likesColor },
-      () => {
-        // Update status to let user know options were saved.
-        const status = document.getElementById('status');
-        status.textContent = 'Options saved.';
-        setTimeout(() => {
-          status.textContent = '';
-        }, 750);
-      }
-    );
-  };
-  
-  // Restores select box and checkbox state using the preferences
-  // stored in chrome.storage.
-  const restoreOptions = () => {
-    chrome.storage.sync.get(
-      { favoriteColor: 'red', likesColor: true },
-      (items) => {
-        document.getElementById('color').value = items.favoriteColor;
-        doxsssssscument.getElementById('like').checked = items.likesColor;
-      }
-    );
-  };
-  
-  document.addEventListener('DOMContentLoaded', restoreOptions);
-  document.getElementById('save').addEventListener('click', saveOptions);
+document.addEventListener('DOMContentLoaded', function() {
+  const CenterCheckbox = document.getElementById('Center');
+  const DetailCheckbox = document.getElementById('Detail');
+
+  // Load saved settings
+  chrome.storage.local.get(['CenterCheckbox', 'Detail'], function(result) {
+    CenterCheckbox.checked = result.CenterEnabled !== undefined ? result.CenterEnabled : false;
+    DetailCheckbox.checked = result.DetailEnabled !== undefined ? result.DetailEnabled : false;
+  });
+
+  // Autosave settings on change
+  CenterCheckbox.addEventListener('change', function() {
+    chrome.storage.local.set({ CenterEnabled: CenterCheckbox.checked }, function() {
+      console.log('Assignment Center setting autosaved:', CenterCheckbox.checked);
+    });
+    // Notify background script to update content script if needed
+    chrome.runtime.sendMessage({ action: 'updateContentScript' });
+  });
+
+  DetailCheckbox.addEventListener('change', function() {
+    chrome.storage.local.set({ DetailEnabled: DetailCheckbox.checked }, function() {
+      console.log('Assignment Detail setting autosaved:', DetailCheckbox.checked);
+    });
+    // Notify background script to update content script if needed
+    chrome.runtime.sendMessage({ action: 'updateContentScript' });
+  });
+});
