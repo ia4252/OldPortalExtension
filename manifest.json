@@ -17,7 +17,11 @@
     "content_scripts": [
       {
         "matches": ["https://trevor.myschoolapp.com/lms-assignment/assignment/assignment-student-view/*"],
-        "js": ["content.js"]
+        "js": ["content1.js"]
+      },
+      {
+        "matches": ["https://trevor.myschoolapp.com/lms-assignment/assignment-center/student"],
+        "js": ["content2.js"]
       }
     ]
   }
