@@ -2,9 +2,6 @@
     "manifest_version": 3,
     "name": "Old Portal Style",
     "version": "1.0",
-
-    "default_title": "Click Me",
-    "default_popup": "popup.html",
     "permissions": [
     "storage"
   ],
