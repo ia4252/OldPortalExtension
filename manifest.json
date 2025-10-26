@@ -3,7 +3,9 @@
     "name": "Old Portal Style",
     "version": "2.0",
     "permissions": [
-    "storage"
+    "storage",
+    "activeTab",
+    "scripting"
   ],
   "action": {
     "default_popup": "options.html",
@@ -22,6 +24,13 @@
       {
         "matches": ["https://trevor.myschoolapp.com/lms-assignment/assignment-center/student"],
         "js": ["content2.js"]
+      },
+      {
+        "matches": ["https://trevor.myschoolapp.com/app/student*"],
+        "js": ["content3.js"]
+      },{
+        "matches": ["https://trevor.myschoolapp.com/app/student*"],
+        "js": ["content4.js"]
       }
     ]
   }
