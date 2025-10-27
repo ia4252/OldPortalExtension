@@ -1,1 +1,1 @@
-Chrome Extension for using the old version of the Trevor portal (assignment center and assignment detail). Published on [https://chromewebstore.google.com/detail/old-portal-style/jjociecgdhidnkdpcamhnmodmgjgfiej](url)
+Chrome Extension for using the old version of the Trevor portal (assignment center and assignment detail). Published on [[https://chromewebstore.google.com/detail/old-portal-style/jjociecgdhidnkdpcamhnmodmgjgfiej](url=)](https://chromewebstore.google.com/detail/old-portal-style/jjociecgdhidnkdpcamhnmodmgjgfiej)
